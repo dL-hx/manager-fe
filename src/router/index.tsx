@@ -1,4 +1,4 @@
-import { Navigate, createHashRouter, createBrowserRouter } from 'react-router-dom'
+import { Navigate, createHashRouter, createBrowserRouter, useRoutes } from 'react-router-dom'
 import Login from '@/views/Login'
 import Welcome from '@/views/Welcome'
 import Error403 from '@/views/403'
@@ -26,4 +26,11 @@ export const router = [
         element: <Error403 />
     },
 ]
-export default createBrowserRouter(router)
+
+// API路由
+// export default createBrowserRouter(router)
+
+// 组件路由
+export default function Router(){
+    return useRoutes(router)
+}
