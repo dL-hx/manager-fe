@@ -1,24 +1,22 @@
-// import axios from 'axios'
-import ReactDOM from 'react-dom/client'
+// 方案二
+import './loading.less'
 
-import Loading from './loading'
 let count = 0
+
+
+
 export const showLoading = () => {
     if (count === 0) {
-        const loading = document.createElement('div')
-        loading.setAttribute('id', 'loading')
-        document.body.append(loading)
-        // const loading = document.getElementById('loading') as HTMLDivElement
-        ReactDOM.createRoot(loading).render(<Loading />)
+        const loading = document.getElementById('loading')
+        loading?.style.setProperty('display', 'flex')
     }
     count++
 }
 
-
 export const hideLoading = () => {
-    if (count < 0) return
-        count--
-    if (count === 0)
-        document.body.removeChild(document.getElementById('loading') as HTMLDivElement)
+    count--
+    if (count === 0) {
+        const loading = document.getElementById('loading')
+        loading?.style.setProperty('display', 'none')
+    }
 }
-

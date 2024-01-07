@@ -7,16 +7,18 @@ const instance = axios.create({
   timeout: 8000,
   timeoutErrorMessage: '请求超时, 请稍后再试',
   withCredentials: true,
-  headers: {}
+  headers: {
+    // icode: ''
+  }
 })
 // 请求拦截器
 instance.interceptors.request.use(
   config => {
     showLoading()
-    const token = localStorage.get('token')
-    if (token) {
-      config.headers.Authorization = 'Token::' + token
-    }
+    // const token = localStorage.get('token')
+    // if (token) {
+    //   config.headers.Authorization = 'Bearer ' + token
+    // }
     return {
       ...config
     }
