@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 
 export default function Login() {
     useEffect(() => {
-        request.get('/users', {
+        request.get<string>('/users', {
             id: 12345
         })
        .then(res => {

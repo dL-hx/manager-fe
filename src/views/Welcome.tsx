@@ -3,11 +3,11 @@ import { Button } from "antd";
 import { useEffect } from "react";
 
 export default function Welcome(){
-    useEffect(()=>{
-        request.get('/users/loading', {})
-        request.get('/users/loading', {})
-        request.get('/users/loading', {})
-    },[])
+    // useEffect(()=>{
+    //     request.get('/users/loading', {})
+    //     request.get('/users/loading', {})
+    //     request.get('/users/loading', {})
+    // },[])
     const handleClick = ()=>{
         request.get('/users', {
             id: 12345
