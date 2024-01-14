@@ -1,9 +1,12 @@
 import { message } from 'antd'
 import axios, { AxiosError } from 'axios'
 import { hideLoading, showLoading } from './loading/index.'
+import storage from './storage'
+
 // 创建实例对象
 const instance = axios.create({
-  baseURL: '/api',
+  // baseURL: '/api',
+  baseURL: import.meta.env.VITE_BASE_API,
   timeout: 8000,
   timeoutErrorMessage: '请求超时, 请稍后再试',
   withCredentials: true,
@@ -16,9 +19,16 @@ instance.interceptors.request.use(
   config => {
     showLoading()
     // const token = localStorage.get('token')
+    // const token = storage.get('token')
     // if (token) {
     //   config.headers.Authorization = 'Bearer ' + token
     // }
+    // 当MOCK 开关打开时， 使用MOCK地址。 否则使用默认地址
+    if (import.meta.env.VITE_MOCK === 'true') {
+      config.baseURL = import.meta.env.VITE_MOCK_API
+    }else{
+      config.baseURL = import.meta.env.VITE_BASE_API
+    }
     return {
       ...config
     }
