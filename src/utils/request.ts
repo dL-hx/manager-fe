@@ -2,11 +2,13 @@ import { message } from 'antd'
 import axios, { AxiosError } from 'axios'
 import { hideLoading, showLoading } from './loading/index.'
 import storage from './storage'
+import env from '@/config'
 
 // 创建实例对象
 const instance = axios.create({
   // baseURL: '/api',
-  baseURL: import.meta.env.VITE_BASE_API,
+  // baseURL: import.meta.env.VITE_BASE_API,
+  baseURL: env.baseApi,
   timeout: 8000,
   timeoutErrorMessage: '请求超时, 请稍后再试',
   withCredentials: true,
@@ -23,11 +25,21 @@ instance.interceptors.request.use(
     // if (token) {
     //   config.headers.Authorization = 'Bearer ' + token
     // }
+
+    // 配置环境变量的两种方式
     // 当MOCK 开关打开时， 使用MOCK地址。 否则使用默认地址
-    if (import.meta.env.VITE_MOCK === 'true') {
-      config.baseURL = import.meta.env.VITE_MOCK_API
-    }else{
-      config.baseURL = import.meta.env.VITE_BASE_API
+    // 编译时环境
+    // if (import.meta.env.VITE_MOCK === 'true') {
+    //   config.baseURL = import.meta.env.VITE_MOCK_API
+    // }else{
+    //   config.baseURL = import.meta.env.VITE_BASE_API
+    // }
+
+    // 运行时环境
+    if (env.mock) {
+      config.baseURL = env.mockApi
+    } else {
+      config.baseURL = env.baseApi
     }
     return {
       ...config
