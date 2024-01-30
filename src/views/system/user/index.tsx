@@ -158,8 +158,8 @@ export default function UserList() {
                     <Select style={{ width: 120 }}>
                         <Select.Option value={0}>所有</Select.Option>
                         <Select.Option value={1}>在职</Select.Option>
-                        <Select.Option value={2}>试用期</Select.Option>
-                        <Select.Option value={3}>离职</Select.Option>
+                        <Select.Option value={2}>离职</Select.Option>
+                        <Select.Option value={3}>试用期</Select.Option>
                     </Select>
                 </Form.Item>
 
