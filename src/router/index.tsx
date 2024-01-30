@@ -1,6 +1,8 @@
 import { Navigate, createHashRouter, createBrowserRouter, useRoutes } from 'react-router-dom'
 import Login from '@/views/Login'
 import Welcome from '@/views/Welcome'
+// import Dashboard from '@/views/dashboard'
+import User from '@/views/system/user'
 import Error403 from '@/views/403'
 import Error404 from '@/views/404'
 import TreeMenu from '@/views/TreeMenu'
@@ -19,6 +21,12 @@ export const router = [
         path: '/tree',
         element: <TreeMenu />
     },
+    // @todo, 这里后面要改成Layout , batch3
+    {
+        path: '/userList',
+        element: <User />
+    },
+
     {
         path: '*',// 匹配路由不到路由, 跳转404. 用Navigate组件重定向到404
         element: <Navigate to='/404' />

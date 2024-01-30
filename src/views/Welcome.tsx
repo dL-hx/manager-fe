@@ -1,3 +1,4 @@
+import { formatMoney } from "@/utils";
 import request from "@/utils/request";
 import storage from "@/utils/storage";
 import { Button } from "antd";
@@ -10,15 +11,16 @@ export default function Welcome(){
     //     request.get('/users/loading', {})
     // },[])
     const handleClick = ()=>{
-        request.get('/users', {
-            id: 12345
-        })
-       .then(res => {
-           console.log('res:', res);
-       })
-       .catch((error) => {
-           console.log('error:', error);
-       })
+        console.log(formatMoney('123456789.57'));
+    //     request.get('/users', {
+    //         id: 12345
+    //     })
+    //    .then(res => {
+    //        console.log('res:', res);
+    //    })
+    //    .catch((error) => {
+    //        console.log('error:', error);
+    //    })
     }
     const handleStorage = (type: number): void =>{
         if (type === 1) {
